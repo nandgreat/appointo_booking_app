@@ -29,7 +29,7 @@
 
                 <button type="submit">Login</button>
                 <hr>
-                <h6>Don't have an account? <a href="{{route('loginshow')}}">Signup</a></h6>
+                <h6>Don't have an account? <a href="{{route('registration')}}">Signup</a></h6>
             </form>
         </div>
     </main>
