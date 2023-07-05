@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::post('/calendly-webhook/v9dfa7tSLSwa79mkalchdyqi/events', [CalendyController::class, 'calendlyWebhook']);
+Route::post('/calendly-webhook/v9dfa7tSLSwa79mkalchdyqi/auth', [CalendyController::class, 'calendlyWebhook']);

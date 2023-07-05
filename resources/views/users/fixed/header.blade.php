@@ -19,7 +19,7 @@
     </div>
     @endif
 
-    @if (request()->url() === url('/'))
+    @if (request()->url() === url('/') || request()->url() === url('/barbing_schedules'))
 
     <div id="topbar">
         <p><b>AAP</b>ointo</p>
@@ -41,7 +41,7 @@
 
     @endif
 
-    @if(request()->url() === url('/barbing/book'))
+    @if(request()->url() === url('/barbing_schedules/book') || request()->url() === url('/payment-page'))
 
     <div id="topbar">
         <p><b>AAP</b>ointo</p>

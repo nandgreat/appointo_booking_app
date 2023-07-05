@@ -112,13 +112,13 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 Route::get('/', function () {
     if (Auth::check()) {
         return view('users.pages.homepage');
-    }else{
+    } else {
         return redirect('/user/login');
     }
 })->name('frontend.user');
 
 Route::get('/user/login', [registrationcontroller::class, 'loginshow'])->name('loginshow');
-Route::get('/barbing/book', [BookBarbingController::class, 'bookBarbing'])->name('bookBarbingShow');
+
 Route::post('/login/post', [registrationcontroller::class, 'loginPost'])->name('user.post.login');
 Route::get('/forgotpassword', [registrationcontroller::class, 'forgotPassword'])->name('user.forgotpassword');
 Route::post('/process-forgotpassword', [registrationcontroller::class, 'processForgotPassword'])->name('user.process.forgotpassword');
@@ -135,8 +135,13 @@ Route::group(['middleware' => 'handle'], function () {
 
     // route for search bus
     Route::get('/bookingticket/show', [bookingticketcontroller::class, 'bookingshow'])->name('booking');
+    Route::get('/bookingticket/show', [bookingticketcontroller::class, 'bookingHomeServicehow'])->name('booking-home');
     Route::get('/webbusdetails/show', [bookingticketcontroller::class, 'webbusdetails'])->name('webbusdetails');
     Route::post('/webbusdetails/store', [bookingticketcontroller::class, 'webbusdetailsstore'])->name('webbusdetails.store');
+
+    Route::get('/barbing_schedules/book', [BookBarbingController::class, 'bookBarbing'])->name('bookBarbingShow');
+    Route::get('/barbing_schedules', [BookBarbingController::class, 'myBookings'])->name('myBookings');
+
 
     //route for booking
     Route::get('/check-in', [ShowBookingInfoController::class, 'checkInPage'])->name('user.book.ticket');

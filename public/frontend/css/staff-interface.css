@@ -4,6 +4,9 @@ body{
 
 }
 
+input{
+    color: grey;
+}
 
 
 #topbar{
@@ -30,7 +33,7 @@ body{
 }
 
 .form-control{
-    color:white
+    color:grey
 }
 
 .topbox{
@@ -69,14 +72,10 @@ main{
     width: 60%;
 }
 
-
-
-
 form{
     display: flex;
     flex-direction:column;
     padding: 50px 30px 50px 30px;
-    
     background-color: rgb(230, 237, 237);
     margin:  0 auto;
     /* border: 1px solid red; */
@@ -85,6 +84,7 @@ form input{
     
     padding:  10px 10px 10px 20px;
     border: none;
+    color: 'grey';
     background: #77627F;
     border-radius: 7px;
     margin-top: 20px;

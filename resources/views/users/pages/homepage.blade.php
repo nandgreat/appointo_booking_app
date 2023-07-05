@@ -9,18 +9,19 @@
 @section('content')
 
 <div class="row">
-    <div class="col-md-4 offset-4" style="display:flex; flex-direction: row; margin-top: 100px; justify-content: space-between;">
+    <h3 class="text-center" style="margin-top: 50px;">Select Booking Type</h3>
 
+    <div class="col-md-4 offset-4" style="display:flex; flex-direction: row; margin-top: 50px; justify-content: space-between;">
         <div class="text-center">
-            <a href="#">
+            <a href="{{route('bookBarbingShow')}}">
                 <img src="{{asset('frontend')}}/assets/img/scissors.png" style="height: 100px; width:auto;" alt="salon">
-                <h5>Salon</h5>
+                <h5 style="margin-top: 20px;">Salon Appointment</h5>
             </a>
         </div>
         <div class="text-center">
-            <a href="#">
+            <a href="{{route('bookBarbingShow', ['service_type' => 'home'])}}">
                 <img src="{{asset('frontend')}}/assets/img/home_logo.png" style="height: 100px; width:auto;" alt="homelogo" width="40" height="40">
-                <h5>Home Service</h5>
+                <h5 style="margin-top: 20px;">Home Service</h5>
             </a>
         </div>
 
@@ -30,9 +31,7 @@
 
 <div class="row">
     <div class="col-md-4 offset-4">
-        <a href="{{route('bookBarbingShow')}}" class="btn btn-default default-btn form-control">Book Appointment</a>
-        <a href="#" class="btn btn-default default-btn form-control">Confirm Appointment</a>
-        <a href="#" class="btn btn-default default-btn form-control">Change Appointment</a>
+        <a href="{{route('myBookings')}}" class="btn btn-default default-btn form-control">My Bookings</a>
         <a href="#" class="btn btn-default default-btn form-control">Cancel Appointment</a>
         <a href="{{route('user.logout')}}" class="btn btn-default outline-btn form-control">Logout</a>
     </div>

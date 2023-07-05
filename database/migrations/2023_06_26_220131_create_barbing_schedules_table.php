@@ -25,6 +25,8 @@ class CreateBarbingSchedulesTable extends Migration
             $table->string('event_url');
             $table->string('start_time');
             $table->string('end_time');
+            $table->string('service_type');
+            $table->string('address');
             $table->unsignedBigInteger("barbing_status_id");
             $table->foreign("barbing_status_id")->references('id')->on('barbing_statuses');
             $table->float('booking_amount');

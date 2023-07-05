@@ -19,11 +19,11 @@
     <link href="{{asset('frontend')}}/css/staff-interface.css" rel="stylesheet" />
     @endif
 
-    @if (request()->url() === url('/'))
+    @if (request()->url() === url('/') || request()->url() === url('/barbing_schedules'))
     <link href="{{asset('frontend')}}/css/appointment-page.css" rel="stylesheet" />
     @endif
 
-    @if (request()->url() === url('/barbing/book'))
+    @if (request()->url() === url('/barbing_schedules/book') || request()->url() === url('/payment-page'))
     <link href="{{asset('frontend')}}/css/appointment-page2.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="fonts/icomoon/style.css">

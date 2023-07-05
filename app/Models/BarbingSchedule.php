@@ -23,4 +23,9 @@ class BarbingSchedule extends Model
         "booking_amount",
         "booking_date"
     ];
+
+    public function status()
+    {
+        return $this->hasOne(BarbingStatus::class, 'id', 'barbing_status_id');
+    }
 }
