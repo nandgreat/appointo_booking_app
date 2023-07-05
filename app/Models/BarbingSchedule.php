@@ -19,9 +19,11 @@ class BarbingSchedule extends Model
         "event_url",
         "start_time",
         "end_time",
+        "address",
         "barbing_status_id",
         "booking_amount",
-        "booking_date"
+        "booking_date",
+        "service_type"
     ];
 
     public function status()
