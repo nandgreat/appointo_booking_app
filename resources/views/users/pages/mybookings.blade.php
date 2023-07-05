@@ -20,7 +20,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-9 offset-1">
+            <div class="col-md-10 offset-1">
                 <div class="table mt-5">
                     @if($bookings->count()>0)
                     <table class="table table-striped" style="width:100%">
