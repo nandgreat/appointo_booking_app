@@ -28,7 +28,7 @@ class BookBarbingController extends Controller
     {
         $bookings = BarbingSchedule::with('status')->where('user_id', auth()->user()->id)->get();
 
-        Log::info(auth()->user());
+        Log::info($bookings);
 
         return view('users.pages.mybookings', compact('bookings'));
     }
