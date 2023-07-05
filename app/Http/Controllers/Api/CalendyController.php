@@ -40,6 +40,7 @@ class CalendyController extends Controller
 
             return  response()->json(['status' => "00", 'message' => "Schedule added successfully", 'data' => $barbingSchedule]);
         } catch (Exception $e) {
+            Log::info($e->getMessage());
             return  response()->json(['status' => "01", 'message' => "Failed to handle webhook"], 400);
         }
     }

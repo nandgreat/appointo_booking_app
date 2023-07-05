@@ -43,9 +43,9 @@
                 <h4>Card Details</h4>
                 <input type="number" name="" id="" placeholder="">
 
-                <input type="password" name="" id="" placeholder="Expiry Date">
+                <input type="text" name="" id="" placeholder="Expiry Date">
 
-                <button type="submit">Proceed To Confirm</button>
+                <button type="submit" style="padding-bottom: 20px !important;">Proceed To Confirm</button>
 
             </form>
         </div>
