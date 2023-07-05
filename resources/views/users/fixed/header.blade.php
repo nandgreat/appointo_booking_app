@@ -34,6 +34,8 @@
             <div class="aptmnt-bx">
                 <h2><b>BOOK<br>APPOINTMENT</b></h2>
                 <hr>
+                <h2 ><a href="{{route('frontend.user')}}" class="btn" style="color:white">< Dashboard</a></h2>
+
             </div>
         </div>
 
@@ -53,6 +55,7 @@
         <div class="topbox">
             <div class="aptmnt-bx">
                 <h2 style="color:white"><b>BOOK<br>APPOINTMENT</b></h2>
+                <h2 ><a href="{{route('frontend.user')}}" class="btn" style="color:white">< Dashboard</a></h2>
                 <hr>
             </div>
         </div>
