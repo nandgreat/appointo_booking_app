@@ -29,7 +29,7 @@ class CalendyController extends Controller
                 "cancel_url" => $currentRequest['payload']['cancel_url'],
                 "reschedule_url" => $currentRequest['payload']['reschedule_url'],
                 "event_url" => $currentRequest['payload']['reschedule_url'],
-                "service_type" => $currentRequest['payload']['scheduled_event']['name'],
+                "service_type" => "Salon Service",
                 "address" => $currentRequest['payload']['scheduled_event']['location']['location'],
                 "start_time" => $currentRequest['payload']['scheduled_event']['start_time'],
                 "end_time" => $currentRequest['payload']['scheduled_event']['end_time'],
