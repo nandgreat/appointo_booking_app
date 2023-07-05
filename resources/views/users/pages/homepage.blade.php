@@ -9,7 +9,7 @@
 @section('content')
 
 <div class="row">
-    <h3 class="text-center" style="margin-top: 50px;">Welcome {{auth()->user()->first_name}}</h3>
+    <h3 class="text-center" style="margin-top: 50px;">Welcome {{auth()->user()->name}}</h3>
     <h3 class="text-center" style="margin-top: 50px;">Select Booking Type</h3>
 
     <div class="col-md-4 offset-4" style="display:flex; flex-direction: row; margin-top: 50px; justify-content: space-between;">
