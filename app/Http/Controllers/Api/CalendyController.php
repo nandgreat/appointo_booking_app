@@ -22,14 +22,14 @@ class CalendyController extends Controller
         try {
 
             $barbingSchedule = BarbingSchedule::create([
-                "user_id" => 1,
+                "user_id" => 3,
                 "customer_name" => $currentRequest['payload']['name'],
                 "customer_email" => $currentRequest['payload']['email'],
                 "customer_phone" => $currentRequest['payload']['email'],
                 "cancel_url" => $currentRequest['payload']['cancel_url'],
                 "reschedule_url" => $currentRequest['payload']['reschedule_url'],
                 "event_url" => $currentRequest['payload']['reschedule_url'],
-                "service_type" => "Salon Service",
+                "service_type" => $currentRequest['payload']['scheduled_event']['name'],
                 "address" => $currentRequest['payload']['scheduled_event']['location']['location'],
                 "start_time" => $currentRequest['payload']['scheduled_event']['start_time'],
                 "end_time" => $currentRequest['payload']['scheduled_event']['end_time'],

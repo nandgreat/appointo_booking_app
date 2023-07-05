@@ -28,6 +28,6 @@ class BarbingSchedule extends Model
 
     public function status()
     {
-        return $this->hasOne(BarbingStatus::class, 'id', 'barbing_status_id');
+        return $this->hasOne(BarbingStatus::class, 'barbing_status_id', 'id');
     }
 }
