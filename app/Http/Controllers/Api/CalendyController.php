@@ -31,24 +31,51 @@ class CalendyController extends Controller
         $amount = $currentRequest['payload']['tracking']["utm_content"];
 
         try {
-            $barbingSchedule = BarbingSchedule::create([
-                "user_id" => $user->id,
-                "customer_name" => $currentRequest['payload']['name'],
-                "customer_email" => $currentRequest['payload']['email'],
-                "customer_phone" => $currentRequest['payload']['email'],
-                "cancel_url" => $currentRequest['payload']['cancel_url'],
-                "reschedule_url" => $currentRequest['payload']['reschedule_url'],
-                "event_url" => $currentRequest['payload']['reschedule_url'],
-                "service_type" => $currentRequest['payload']['scheduled_event']['name'],
-                "address" => $currentRequest['payload']['scheduled_event']['location']['location'],
-                "start_time" => $currentRequest['payload']['scheduled_event']['start_time'],
-                "end_time" => $currentRequest['payload']['scheduled_event']['end_time'],
-                "barbing_status_id" => 1,
-                "booking_date" => Carbon::now(),
-                "booking_amount" => $amount,
-            ]);
 
-            return  response()->json(['status' => "00", 'message' => "Schedule added successfully", 'data' => $barbingSchedule]);
+            if ($currentRequest['event'] == "invitee.created") {
+
+                $barbingSchedule = BarbingSchedule::create([
+                    "user_id" => $user->id,
+                    "customer_name" => $currentRequest['payload']['name'],
+                    "customer_email" => $currentRequest['payload']['email'],
+                    "customer_phone" => $currentRequest['payload']['questions_and_answers'][0]['answer'],
+                    "cancel_url" => $currentRequest['payload']['cancel_url'],
+                    "reschedule_url" => $currentRequest['payload']['reschedule_url'],
+                    "event_url" => $currentRequest['payload']['event'],
+                    "service_type" => $currentRequest['payload']['scheduled_event']['name'],
+                    "address" => $currentRequest['payload']['scheduled_event']['location']['location'],
+                    "start_time" => $currentRequest['payload']['scheduled_event']['start_time'],
+                    "end_time" => $currentRequest['payload']['scheduled_event']['end_time'],
+                    "barbing_status_id" => 1,
+                    "booking_date" => Carbon::now(),
+                    "booking_amount" => $amount,
+                ]);
+
+                return  response()->json(['status' => "00", 'message' => "Schedule added successfully", 'data' => $barbingSchedule]);
+            }
+
+            $eventUrl = $currentRequest['payload']['event'];
+
+            $event = BarbingSchedule::where('event_url', $eventUrl)->first();
+
+            $type = $currentRequest['event'] == "invitee.cancelled" ? 4 : 1;
+
+            if ($event) {
+                $event->customer_name = $currentRequest['payload']['name'];
+                $event->customer_email = $currentRequest['payload']['email'];
+                $event->customer_phone = $currentRequest['payload']['questions_and_answers'][0]['answer'];
+                $event->cancel_url = $currentRequest['payload']['cancel_url'];
+                $event->reschedule_url = $currentRequest['payload']['reschedule_url'];
+                $event->event_url = $currentRequest['payload']['event'];
+                $event->service_type = $currentRequest['payload']['scheduled_event']['name'];
+                $event->address = $currentRequest['payload']['scheduled_event']['location']['location'];
+                $event->start_time = $currentRequest['payload']['scheduled_event']['start_time'];
+                $event->end_time = $currentRequest['payload']['scheduled_event']['end_time'];
+                $event->barbing_status_id = $type;
+                $event->save();
+            } else {
+                return  response()->json(['status' => "02", 'message' => "No such schedule exists"], 400);
+            }
         } catch (Exception $e) {
             Log::info($e->getMessage());
             return  response()->json(['status' => "02", 'message' => "Failed to handle webhook"], 400);
