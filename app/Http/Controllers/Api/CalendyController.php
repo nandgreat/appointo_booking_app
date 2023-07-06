@@ -19,10 +19,19 @@ class CalendyController extends Controller
 
         $currentRequest = $request->all();
 
-        try {
+        $userEmail = $currentRequest['payload']['scheduled_event']['tracking']["utm_source"];
 
+        $user = User::where('email', $userEmail)->first();
+
+        if (!$user) {
+            return  response()->json(['status' => "01", 'message' => "Failed to User information"], 400);
+        }
+
+        $amount = $currentRequest['payload']['scheduled_event']['tracking']["utm_content"];
+
+        try {
             $barbingSchedule = BarbingSchedule::create([
-                "user_id" => 3,
+                "user_id" => $user,
                 "customer_name" => $currentRequest['payload']['name'],
                 "customer_email" => $currentRequest['payload']['email'],
                 "customer_phone" => $currentRequest['payload']['email'],
@@ -35,13 +44,13 @@ class CalendyController extends Controller
                 "end_time" => $currentRequest['payload']['scheduled_event']['end_time'],
                 "barbing_status_id" => 1,
                 "booking_date" => Carbon::now(),
-                "booking_amount" => "1000",
+                "booking_amount" => $amount,
             ]);
 
             return  response()->json(['status' => "00", 'message' => "Schedule added successfully", 'data' => $barbingSchedule]);
         } catch (Exception $e) {
             Log::info($e->getMessage());
-            return  response()->json(['status' => "01", 'message' => "Failed to handle webhook"], 400);
+            return  response()->json(['status' => "02", 'message' => "Failed to handle webhook"], 400);
         }
     }
 }
