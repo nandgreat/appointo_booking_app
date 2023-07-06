@@ -19,7 +19,7 @@ class CalendyController extends Controller
 
         $currentRequest = $request->all();
 
-        $userEmail = $currentRequest['payload']['scheduled_event']['tracking']["utm_source"];
+        $userEmail = $currentRequest['payload']['tracking']["utm_source"];
 
         $user = User::where('email', $userEmail)->first();
 
@@ -27,7 +27,7 @@ class CalendyController extends Controller
             return  response()->json(['status' => "01", 'message' => "Failed to User information"], 400);
         }
 
-        $amount = $currentRequest['payload']['scheduled_event']['tracking']["utm_content"];
+        $amount = $currentRequest['payload']['tracking']["utm_content"];
 
         try {
             $barbingSchedule = BarbingSchedule::create([
