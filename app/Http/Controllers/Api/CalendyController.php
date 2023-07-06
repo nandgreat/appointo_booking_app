@@ -31,7 +31,7 @@ class CalendyController extends Controller
 
         try {
             $barbingSchedule = BarbingSchedule::create([
-                "user_id" => $user,
+                "user_id" => $user->id,
                 "customer_name" => $currentRequest['payload']['name'],
                 "customer_email" => $currentRequest['payload']['email'],
                 "customer_phone" => $currentRequest['payload']['email'],
