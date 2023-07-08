@@ -50,8 +50,8 @@
                                 <td>&#8358;{{($a->booking_amount)}}</td>
                                 <td>{{($a->status->barbing_status)}}</td>
                                 <td>
-                                    <a class="btn btn-danger btn-sm" style="padding: 10px;" href="{{$a->cancel_url}}" role="button">Cancel</a>
-                                    <a class="btn btn-primary btn-sm" style="padding: 10px;" href="{{$a->reschedule_url}}" role="button">Reschedule</a>
+                                    <a class="btn btn-danger btn-sm" target="_blank" style="padding: 10px;" href="{{$a->cancel_url}}" role="button">Cancel</a>
+                                    <a class="btn btn-primary btn-sm"  target="_blank" style="padding: 10px;" href="{{$a->reschedule_url}}" role="button">Reschedule</a>
                                 </td>
                             </tr>
                             @endforeach
