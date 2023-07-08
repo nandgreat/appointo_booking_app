@@ -16,8 +16,6 @@ class CalendyController extends Controller
     public function calendlyWebhook(Request $request)
     {
 
-        Log::info($request);
-
         $currentRequest = $request->all();
 
         $userEmail = $currentRequest['payload']['tracking']["utm_source"];
@@ -51,7 +49,7 @@ class CalendyController extends Controller
                     "booking_amount" => $amount,
                 ]);
 
-                return  response()->json(['status' => "00", 'message' => "Schedule added successfully", 'data' => $barbingSchedule]);
+                return response()->json(['status' => "00", 'message' => "Schedule added successfully", 'data' => $barbingSchedule]);
             }
 
             $eventUrl = $currentRequest['payload']['event'];
@@ -74,10 +72,10 @@ class CalendyController extends Controller
                 $event->barbing_status_id = $type;
                 $event->save();
             } else {
-                return  response()->json(['status' => "02", 'message' => "No such schedule exists"], 400);
+                return response()->json(['status' => "02", 'message' => "No such schedule exists"], 400);
             }
         } catch (Exception $e) {
-            Log::info($e->getMessage());
+            logInfo($e->getMessage());
             return  response()->json(['status' => "02", 'message' => "Failed to handle webhook"], 400);
         }
     }
