@@ -26,7 +26,7 @@ class BookBarbingController extends Controller
 
     public function myBookings(Request $request)
     {
-        $bookings = BarbingSchedule::with('status')->where('user_id', auth()->user()->id)->get();
+        $bookings = BarbingSchedule::with('status')->where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
 
         Log::info($bookings);
 
