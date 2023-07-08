@@ -58,7 +58,7 @@ class CalendyController extends Controller
 
             $event = BarbingSchedule::where('event_url', $eventUrl)->first();
 
-            $type = $currentRequest['event'] == "invitee.cancelled" ? 4 : 1;
+            $type = $currentRequest['event'] == "invitee.canceled" ? 4 : 1;
 
             if ($event) {
                 $event->customer_name = $currentRequest['payload']['name'];
