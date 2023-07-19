@@ -20,6 +20,7 @@
     @endif
 
     @if (request()->url() === url('/') || request()->url() === url('/barbing_schedules'))
+    @if(auth()->user()->role == "user")
 
     <div id="topbar">
         <p><b>AAP</b>ointo</p>
@@ -40,6 +41,15 @@
         </div>
 
     </div>
+    @endif
+    @if(auth()->user()->role == "admin")
+
+    <div id="topbar">
+        <p><b>AAP</b>ointo</p>
+
+    </div>
+
+    @endif
 
     @endif
 

@@ -26,10 +26,41 @@ class BookBarbingController extends Controller
 
     public function myBookings(Request $request)
     {
-        $bookings = BarbingSchedule::with('status')->where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
+        if (auth()->user()->role == "user") {
+            $bookings = BarbingSchedule::with('status')->where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
+        } else {
+            $bookings = BarbingSchedule::with('status')->orderBy('id', 'desc')->get();
+        }
 
         Log::info($bookings);
 
-        return view('users.pages.mybookings', compact('bookings'));
+        if (auth()->user()->role == "user")
+            return view('users.pages.mybookings', compact('bookings'));
+        else
+            return view('users.pages.manage_booking', compact('bookings'));
+    }
+
+    public function markComplete(Request $request)
+    {
+
+        if ($request->has("schedule_id")) {
+            $schedule = BarbingSchedule::where('id', $request->schedule_id)->first();
+
+            if (!$schedule) {
+                return redirect()->back()->with('error', 'Invalid Schedule Id');;
+            }
+
+            $schedule->barbing_status_id = 3;
+            $schedule->save();
+
+            return redirect()->back()->with('success', 'Barbing Has been completed by customer');;
+        } else {
+            return redirect()->back()->with('error', 'No Schedule Id specified');;
+        }
+
+        if (auth()->user()->role == "user")
+            return view('users.pages.mybookings', compact('bookings'));
+        else
+            return view('users.pages.manage_booking', compact('bookings'));
     }
 }

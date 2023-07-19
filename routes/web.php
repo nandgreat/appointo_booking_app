@@ -21,7 +21,9 @@ use App\Http\Controllers\Frontend\bookingticketcontroller;
 use App\Http\Controllers\Frontend\CustomerProfilecontroller;
 use App\Http\Controllers\Frontend\ShowBookingInfoController;
 use App\Http\Controllers\Frontend\UserPaymentController;
+use App\Models\BarbingSchedule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -111,6 +113,9 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 
 Route::get('/', function () {
     if (Auth::check()) {
+
+
+
         return view('users.pages.homepage');
     } else {
         return redirect('/user/login');
@@ -141,6 +146,7 @@ Route::group(['middleware' => 'handle'], function () {
 
     Route::get('/barbing_schedules/book', [BookBarbingController::class, 'bookBarbing'])->name('bookBarbingShow');
     Route::get('/barbing_schedules', [BookBarbingController::class, 'myBookings'])->name('myBookings');
+    Route::get('/mark-complete', [BookBarbingController::class, 'markComplete'])->name('mark-complete');
 
 
     //route for booking

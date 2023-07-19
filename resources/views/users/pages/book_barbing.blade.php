@@ -59,13 +59,10 @@
     };
 
     window.addEventListener("message", function(e) {
-        if (isCalendlyEvent(e)) {
-            /* Example to get the name of the event */
-            console.log("Event name:", e.data.event);
 
-            /* Example to get the payload of the event */
-            console.log("Event details:", e.data.payload);
-        }
+        console.log("Our new event");
+        console.log(e);
+
     });
 </script>
 
