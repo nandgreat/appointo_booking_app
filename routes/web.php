@@ -147,6 +147,7 @@ Route::group(['middleware' => 'handle'], function () {
     Route::get('/barbing_schedules/book', [BookBarbingController::class, 'bookBarbing'])->name('bookBarbingShow');
     Route::get('/barbing_schedules', [BookBarbingController::class, 'myBookings'])->name('myBookings');
     Route::get('/mark-complete', [BookBarbingController::class, 'markComplete'])->name('mark-complete');
+    Route::get('/booking-options', [BookBarbingController::class, 'bookingOptions'])->name('booking-options');
 
 
     //route for booking

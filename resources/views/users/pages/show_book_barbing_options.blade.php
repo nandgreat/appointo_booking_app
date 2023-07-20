@@ -1,0 +1,95 @@
+@extends('users.master')
+
+@section('title', 'Dashboard')
+
+@section('content_header')
+<h1>Users</h1>
+@stop
+
+@section('content')
+
+
+
+@if(auth()->user()->role == "admin")
+<div class="row">
+    <h3 class="" style="margin-top: 50px;">Welcome {{auth()->user()->name}}</h3>
+
+
+    <main>
+        @include("users.fixed.admin_sidebar")
+
+</div>
+
+<div class="section-2">
+
+    <div class="row">
+        <h3 class="text-center" style="margin-top: 50px;">Welcome {{auth()->user()->name}}</h3>
+        <h3 class="text-center" style="margin-top: 50px;">Select Booking Type</h3>
+
+        <div class="col-md-6 offset-3" style="display:flex; flex-direction: row; margin-top: 50px; justify-content: space-between;">
+            <div class="text-center">
+                <a href="{{route('bookBarbingShow')}}">
+                    <img src="{{asset('frontend')}}/assets/img/scissors.png" style="height: 100px; width:auto;" alt="salon">
+                    <h5 style="margin-top: 20px; color: #450355">Salon Appointment</h5>
+                </a>
+            </div>
+            <div class="text-center">
+                <a href="{{route('bookBarbingShow', ['service_type' => 'home'])}}">
+                    <img src="{{asset('frontend')}}/assets/img/home_logo.png" style="height: 100px; width:auto;" alt="homelogo" width="40" height="40">
+                    <h5 style="margin-top: 20px; color:#450355">Home Service</h5>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="user">
+    <a href="{{route('user.logout')}}">
+        <div class="icon-2">
+            <img src="{{asset('frontend')}}/assets/img/human.png" width="20px" alt=" admin human">
+            <h4><b>User <br>Logout</b></h4>
+        </div>
+    </a>
+</div>
+
+
+
+
+</main>
+
+@endif
+
+
+<script>
+    anychart.onDocumentLoad(function() {
+        // create an instance of a pie chart
+        var chart = anychart.column();
+        // set the data
+        chart.data([
+            ["Chocolate", 5],
+            ["Rhubarb compote", 2],
+            ["Crêpe Suzette", 2],
+            ["American blueberry", 2],
+            ["Buttermilk", 1]
+        ]);
+        // set chart title
+        chart.title("Monthly Revenues Trend Chart");
+        // set the container element 
+        chart.container("container");
+        // initiate chart display
+        chart.draw();
+    });
+</script>
+
+@endsection
+
+@section('myjsfile')
+<!-- Styles -->
+<script src="{{ asset('vendor/jquery/jquery.min.js') }}" defer></script>
+
+<script src="{{ asset('js/main.js') }}" defer></script>
+
+
+
+
+@stop

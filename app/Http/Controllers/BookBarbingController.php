@@ -40,6 +40,22 @@ class BookBarbingController extends Controller
             return view('users.pages.manage_booking', compact('bookings'));
     }
 
+    public function bookingOptions(Request $request)
+    {
+        if (auth()->user()->role == "user") {
+            $bookings = BarbingSchedule::with('status')->where('user_id', auth()->user()->id)->orderBy('id', 'desc')->get();
+        } else {
+            $bookings = BarbingSchedule::with('status')->orderBy('id', 'desc')->get();
+        }
+
+        Log::info($bookings);
+
+        if (auth()->user()->role == "admin")
+            return view('users.pages.show_book_barbing_options');
+        else
+            return view('users.pages.manage_booking', compact('bookings'));
+    }
+
     public function markComplete(Request $request)
     {
 

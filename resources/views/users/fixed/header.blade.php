@@ -19,7 +19,7 @@
     </div>
     @endif
 
-    @if (request()->url() === url('/') || request()->url() === url('/barbing_schedules'))
+    @if (request()->url() === url('/') || request()->url() === url('/barbing_schedules') || request()->url() === url('/booking-options'))
     @if(auth()->user()->role == "user")
 
     <div id="topbar">

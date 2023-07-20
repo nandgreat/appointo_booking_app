@@ -21,7 +21,7 @@
     <link href="{{asset('frontend')}}/css/staff-interface.css" rel="stylesheet" />
     @endif
 
-    @if (request()->url() === url('/') || request()->url() === url('/barbing_schedules'))
+    @if (request()->url() === url('/') || request()->url() === url('/barbing_schedules') || request()->url() === url('/booking-options'))
 
     @if(auth()->user()->role == "admin")
     <link href="{{asset('frontend')}}/css/admin-page.css" rel="stylesheet" />

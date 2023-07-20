@@ -46,65 +46,8 @@
 
 
     <main>
-        <div class="section-1">
-
-            <a href="">
-                <div class="icons">
-                    <img src="{{asset('frontend')}}/assets/img/home-transparent.png" width="50px" alt="salon">
-                    <h5>Home</h5>
-                </div>
-            </a>
-            <a href="">
-                <div class="icons">
-                    <img src="{{asset('frontend')}}/assets/img/dashboard.png" width="40px" alt="salon">
-                    <h5>Dashboard</h5>
-                </div>
-            </a>
-            <a href="">
-                <div class="icons">
-                    <img src="{{asset('frontend')}}/assets/img/services.png" width="40px" alt="salon">
-                    <h5>Services</h5>
-                </div>
-            </a>
-            <a href="{{route('myBookings')}}">
-                <div class="icons">
-                    <img src="{{asset('frontend')}}/assets/img/bookings.png" width="40px" alt="salon">
-                    <h5>Manage Bookings</h5>
-                </div>
-            </a>
-            <a href="">
-                <div class="icons">
-                    <img src="{{asset('frontend')}}/assets/img/payments.png" width="40px" alt="salon">
-                    <h5>Manage Payments</h5>
-                </div>
-            </a>
-            <a href="">
-                <div class="icons">
-                    <img src="{{asset('frontend')}}/assets/img/documents.png" width="40px" alt="salon">
-                    <h5>Documents</h5>
-                </div>
-            </a>
-            <a href="">
-                <div class="icons">
-                    <img src="{{asset('frontend')}}/assets/img/notifications.png" width="40px" alt="salon">
-                    <h5>Notifications</h5>
-                </div>
-            </a>
-            <a href="">
-                <div class="icons">
-                    <img src="{{asset('frontend')}}/assets/img/reports.png" width="40px" alt="salon">
-                    <h5>Reorts</h5>
-                </div>
-            </a>
-            <a href="">
-                <div class="icons">
-                    <img src="{{asset('frontend')}}/assets/img/settings.png" width="40px" alt="salon">
-                    <h5>Settings</h5>
-                </div>
-            </a>
-
-
-        </div>
+        @include("users.fixed.admin_sidebar")
+    </main>
 
 </div>
 
@@ -119,7 +62,7 @@
 </div>
 
 <div class="user">
-<a href="{{route('user.logout')}}">
+    <a href="{{route('user.logout')}}">
         <div class="icon-2">
             <img src="{{asset('frontend')}}/assets/img/human.png" width="20px" alt=" admin human">
             <h4><b>User <br>Logout</b></h4>
@@ -130,7 +73,6 @@
 
 
 
-</main>
 
 @endif
 
