@@ -36,7 +36,7 @@ class CalendyController extends Controller
                     "user_id" => $user->id,
                     "customer_name" => $currentRequest['payload']['name'],
                     "customer_email" => $currentRequest['payload']['email'],
-                    "customer_phone" => $currentRequest['payload']['questions_and_answers'][0]['answer'],
+                    "customer_phone" => count($currentRequest['payload']['questions_and_answers']) > 0 ? $currentRequest['payload']['questions_and_answers'][0]['answer'] : "",
                     "cancel_url" => $currentRequest['payload']['cancel_url'],
                     "reschedule_url" => $currentRequest['payload']['reschedule_url'],
                     "event_url" => $currentRequest['payload']['event'],
