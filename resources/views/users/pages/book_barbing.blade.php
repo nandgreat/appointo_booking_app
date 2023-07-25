@@ -13,9 +13,9 @@
     <div class="col-md-8 offset-2">
 
         @if($service_type == "salon")
-        <div class="calendly-inline-widget" id="calendlyEventDiv" data-url="https://calendly.com/paulflexy/salon-service?hide_gdpr_banner=1&utm_source={{auth()->user()->email}}&utm_content={{$amount}}" style="min-width:320px;height:730px; flex:1"></div>
+        <div class="calendly-inline-widget" id="calendlyEventDiv" data-url="https://calendly.com/nandomkumchi01/salon-service?hide_gdpr_banner=1&utm_source={{auth()->user()->email}}&utm_content={{$amount}}" style="min-width:320px;height:730px; flex:1"></div>
         @elseif($service_type == "home")
-        <div class="calendly-inline-widget" id="calendlyEventDiv" data-url="https://calendly.com/paulflexy/home-service?hide_gdpr_banner=1&utm_source={{auth()->user()->email}}&utm_content={{$amount}}" style="min-width:320px;height:730px; flex:1"></div>
+        <div class="calendly-inline-widget" id="calendlyEventDiv" data-url="https://calendly.com/nandomkumchi01/home-service?hide_gdpr_banner=1&utm_source={{auth()->user()->email}}&utm_content={{$amount}}" style="min-width:320px;height:730px; flex:1"></div>
         @endif
     </div>
 
@@ -48,7 +48,7 @@
 
 <script>
     // Calendly.initInlineWidget({
-    //     url: 'https://calendly.com/paulflexy?hide_gdpr_banner=1',
+    //     url: 'https://calendly.com/nandomkumchi01?hide_gdpr_banner=1',
     //     parentElement: document.getElementById('calendlyEventDiv'),
     //     prefill: {},
     //     utm: {}
